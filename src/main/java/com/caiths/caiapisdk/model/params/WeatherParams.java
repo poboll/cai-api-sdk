@@ -1,4 +1,4 @@
-package icu.qimuu.qiapisdk.model.params;
+package com.caiths.caiapisdk.model.params;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -6,10 +6,13 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * @Author: QiMu
- * @Date: 2023/09/22 10:11:04
- * @Version: 1.0
- * @Description: 获取天气请求参数
+ * WeatherParams 类，表示获取天气的请求参数。
+ * <p>
+ * 该类用于封装获取天气时所需的参数，包括IP地址、城市名称和天气类型。
+ * </p>
+ *
+ * @author poboll
+ * @since 1.0 (2024年11月21日)
  */
 @Data
 @Accessors(chain = true)

@@ -1,36 +1,47 @@
-package icu.qimuu.qiapisdk.model.request;
+package com.caiths.caiapisdk.model.request;
 
-import icu.qimuu.qiapisdk.model.enums.RequestMethodEnum;
-import icu.qimuu.qiapisdk.model.params.HoroscopeParams;
-import icu.qimuu.qiapisdk.model.response.NameResponse;
-import icu.qimuu.qiapisdk.model.response.ResultResponse;
+import com.caiths.caiapisdk.model.enums.RequestMethodEnum;
+import com.caiths.caiapisdk.model.params.HoroscopeParams;
+import com.caiths.caiapisdk.model.response.ResultResponse;
 import lombok.experimental.Accessors;
 
 /**
- * @Author: QiMu
- * @Date: 2023年09月17日 08:38
- * @Version: 1.0
- * @Description: 随机情话
+ * HoroscopeRequest 类，继承自 BaseRequest，表示星座请求。
+ * <p>
+ * 该类定义了获取星座相关信息的请求方法和路径，并实现了父类的抽象方法以适应具体的请求需求。
+ * </p>
+ *
+ * @author poboll
+ * @since 1.0 (2024年11月21日)
  */
 @Accessors(chain = true)
 public class HoroscopeRequest extends BaseRequest<HoroscopeParams, ResultResponse> {
 
+    /**
+     * 获取请求路径。
+     *
+     * @return {@link String} 请求路径
+     */
     @Override
     public String getPath() {
         return "/horoscope";
     }
 
     /**
-     * 获取响应类
+     * 获取响应类，用于解析返回结果。
      *
-     * @return {@link Class}<{@link NameResponse}>
+     * @return {@link Class} 响应类
      */
     @Override
     public Class<ResultResponse> getResponseClass() {
         return ResultResponse.class;
     }
 
-
+    /**
+     * 获取请求方法。
+     *
+     * @return {@link String} 请求方法
+     */
     @Override
     public String getMethod() {
         return RequestMethodEnum.GET.getValue();

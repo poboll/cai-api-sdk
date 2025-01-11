@@ -1,7 +1,7 @@
 package com.caiths.caiapisdk.utils;
 
-import cn.hutool.crypto.digest.DigestAlgorithm;
-import cn.hutool.crypto.digest.Digester;
+import cn.hutool.crypto.digest.MD5;
+import cn.hutool.json.JSONUtil;
 
 /**
  * 提供接口签名生成功能的工具类。
@@ -12,7 +12,7 @@ import cn.hutool.crypto.digest.Digester;
  * @author poboll
  * @since 1.0 (2024年10月22日)
  */
-public class SignUtil {
+public class SignUtils {
 
     /**
      * 生成基于 SHA-256 算法的签名。
@@ -24,9 +24,7 @@ public class SignUtil {
      * @param secretKey 用于签名的密钥，保证只有授权的客户端能生成和验证签名
      * @return 生成的签名字符串，为 SHA-256 哈希值的十六进制表示
      */
-    public static String genSign(String body, String secretKey) {
-        Digester sha256 = new Digester(DigestAlgorithm.SHA256);
-        String content = body + "." + secretKey; // 拼接内容和密钥
-        return sha256.digestHex(content); // 生成并返回签名
+    public static String getSign(String body, String secretKey) {
+        return MD5.create().digestHex(JSONUtil.toJsonStr(body) + '.' + secretKey);
     }
 }
